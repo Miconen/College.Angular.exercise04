@@ -1,34 +1,42 @@
 <section class="wrapper">
   <h2 class="mb-2">My Heroes</h2>
-  <ul class="heroes">
+  <ul>
     <li *ngFor="let hero of heroes">
-      <button
-        type="button"
-        (click)="onSelect(hero)"
-        [class.selected]="hero === selectedHero"
-        class="mb-2 flex bg-slate-300"
+      <a
+        routerLink="/detail/{{ hero.id }}"
+        class="flex w-full flex-row my-4 button button--slim"
       >
         <span
-          class="badge bg-slate-700 rounder-l rounded-bl text-white p-2 w-10"
+          class="block bg-slate-700 rounded-l-lg rounded-bl-lg text-white p-4 w-20"
           >{{ hero.id }}</span
         >
-        <span
-          class="name rounder-r rounder-br p-2 block w-36 hover:bg-black hover:text-white"
-          >{{ hero.name }}</span
+        <span class="block rounder-r-lg rounder-br-lg p-4 w-full">{{
+          hero.name
+        }}</span>
+        <!-- Remove hero -->
+        <button
+          type="button"
+          class="delete"
+          title="delete hero"
+          (click)="delete(hero)"
         >
-      </button>
+          x
+        </button>
+      </a>
     </li>
   </ul>
-  <div *ngIf="selectedHero">
-    <h2>{{ selectedHero.name | uppercase }} Details</h2>
-    <div>id: {{ selectedHero.id }}</div>
-    <div>
-      <label for="hero-name">Hero name: </label>
-      <input
-        id="hero-name"
-        [(ngModel)]="selectedHero.name"
-        placeholder="name"
-      />
-    </div>
+  <!-- Add hero -->
+  <div>
+    <label for="new-hero">Hero name: </label>
+    <input id="new-hero" #heroName />
+
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button
+      type="button"
+      class="add-button"
+      (click)="add(heroName.value); heroName.value = ''"
+    >
+      Add hero
+    </button>
   </div>
 </section>

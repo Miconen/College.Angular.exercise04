@@ -1,0 +1,16 @@
+.console {
+    // Border
+    @apply outline outline-4 outline-slate-300 rounded-lg;
+    // General
+    @apply bg-black p-3 my-2;
+
+    &>span {
+        @apply text-white block;
+    }
+    &>span::before {
+        @apply text-red-500;
+            content: 'Angular > '
+    }
+}
+
+

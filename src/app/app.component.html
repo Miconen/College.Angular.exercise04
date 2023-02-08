@@ -1,2 +1,9 @@
-<h1>{{ title }}</h1>
-<app-heroes></app-heroes>
+<h1 class="mx-4">{{ title }}</h1>
+<nav class="flex gap-4 mx-4 my-2">
+  <a class="button" routerLink="/dashboard">Dashboard</a>
+  <a class="button" routerLink="/heroes">Heroes</a>
+</nav>
+<main class="mx-4 my-2">
+  <router-outlet class="hidden"></router-outlet>
+  <app-messages></app-messages>
+</main>
